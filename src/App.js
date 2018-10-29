@@ -17,9 +17,9 @@ class App extends Component {
         <div className="content">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/products" render={(props) => <Products sortBy='newest' {...props}/>} />
             <Route path="/products/:id" component={ProductDetails} />
-            <Route path="/posts" component={Posts} />
+            <Route path="/products" render={(props) => <Products sortBy='newest' {...props}/>} />
+            <Route path="/posts/:year?/:month?" component={Posts} />
             <Route path="/admin" component={Dashboard} />
             <Route component={NotFound} />
           </Switch>
