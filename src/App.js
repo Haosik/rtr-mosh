@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import NavBar from './components/navbar';
 import Products from './components/products';
 import Posts from './components/posts';
@@ -18,10 +18,12 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/products/:id" component={ProductDetails} />
-            <Route path="/products" render={(props) => <Products sortBy='newest' {...props}/>} />
+            <Route path="/products" render={props => <Products sortBy="newest" {...props} />} />
             <Route path="/posts/:year?/:month?" component={Posts} />
+            <Redirect from="/messages" to="/posts" />
             <Route path="/admin" component={Dashboard} />
-            <Route component={NotFound} />
+            <Route path="/not-found" component={NotFound} />
+            <Redirect to="/not-found" />
           </Switch>
         </div>
       </div>
